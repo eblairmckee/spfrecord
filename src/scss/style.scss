@@ -1,0 +1,370 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans: 300, 600');
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+@import '~bootstrap/scss/bootstrap';
+
+$font-size: 18px;
+$primary: #5a6dd5;
+$secondary: #9f64ff;
+$accent: #42cbc4;
+$white: rgba(255, 255, 255, 0.9);
+$white--faded: rgba(255, 255, 255, 0.6);
+$font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+$font-accent: 'Poppins', 'Open Sans', Arial, Helvetica, sans-serif;
+
+html {
+	body {
+		box-sizing: border-box;
+		min-height: 100%;
+		font-size: $font-size;
+		font-family: $font-family;
+		color: $white;
+	}
+}
+
+a {
+	color: white;
+	transition: ease 0.3s;
+
+	&:hover {
+		text-decoration: none;
+		color: $white;
+	}
+}
+
+.text--center {
+	text-align: center;
+}
+
+.hl {
+	background: $accent;
+	color: white;
+	transform: rotate(-3deg);
+	font-weight: 600;
+	padding: 0 5px;
+	text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+	font-family: $font-accent;
+	text-transform: uppercase;
+	box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.margin-top-50 {
+	margin-top: 50px;
+}
+
+.no-margin {
+	margin: 0px !important;
+}
+
+.padding-top-100 {
+	padding-top: 100px;
+}
+
+.button--home {
+	font-size: 5em;
+	position: absolute;
+	top: 30px;
+	left: 40px;
+	font-size: 1.4em;
+	transform: rotate(-5deg);
+	z-index: 999;
+}
+
+.button--syntax {
+	position: absolute;
+	top: 80px;
+	right: 20px;
+	font-size: 1.4em;
+	transform: rotate(5deg);
+	z-index: 999;
+}
+
+.title__wrapper {
+	padding: 50px 0;
+}
+
+.section__spf-wizard {
+	background-image: linear-gradient($primary, $secondary);
+	overflow-y: scroll;
+	min-height: 100%;
+	height: 100vh;
+	overflow-x: hidden;
+
+	.overlay {
+		// background-image: url(../images/overlay-left.png);
+		// background-repeat: no-repeat;
+		// background-size: contain;
+		// max-height: 1200px;
+		// background-position: left center;
+		padding: 100px 0px;
+	}
+
+	h1 {
+		text-align: center;
+		color: $white;
+		font-weight: 700;
+		letter-spacing: 3px;
+		text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+		font-family: $font-accent;
+		text-transform: uppercase;
+	}
+
+	h3 {
+		color: $white--faded;
+		font-size: 2em;
+		font-weight: 700;
+		transform: rotate(-3deg);
+		font-family: $font-accent;
+
+		&.even {
+			transform: rotate(3deg);
+		}
+	}
+
+	.intro {
+		&__text {
+			background: rgba(255, 255, 255, 0.1);
+			padding: 30px 30px 20px 30px;
+		}
+	}
+
+	.btn__submit {
+		color: $white;
+		border: 1px solid $white;
+		background: transparent;
+		padding: 5px 20px;
+		cursor: pointer;
+	}
+
+	.form-control {
+		font-size: $font-size;
+		color: $white;
+		background: transparent;
+		border-top: none;
+		border-right: none;
+		border-left: none;
+		border-radius: 0;
+		border-bottom: 2px solid $white;
+
+		&::placeholder {
+			color: $white--faded;
+		}
+	}
+
+	.form-check-label {
+		color: $white;
+
+		span {
+			color: $white--faded;
+		}
+	}
+
+	.form-group {
+		margin-bottom: 70px;
+	}
+
+	.input {
+		&--sticky {
+			background: $accent;
+			box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+			position: fixed;
+			top: 0px;
+			left: 0px;
+			width: 100vw;
+			padding: 5px 0px;
+			z-index: 999;
+		}
+
+		&__answer {
+			height: 2em;
+			width: 100%;
+			background: rgba(255, 255, 255, 0.25);
+			text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+			color: white;
+			font-weight: 600;
+			max-width: 1000px;
+			border: none !important;
+			font-size: 1.2em;
+			border-radius: 3px;
+			transition: ease 0.3s;
+			padding-left: 1em;
+
+			&__wrapper {
+				display: grid;
+				grid-template-columns: auto 1fr 20px auto;
+				justify-items: center;
+				width: 100%;
+				grid-gap: 20px;
+				align-items: center;
+				transition: ease 0.3s;
+				.input__label {
+					font-size: 1.1em;
+					font-family: $font-accent;
+					font-weight: 600;
+					text-transform: uppercase;
+				}
+			}
+
+			&__copy {
+				color: white;
+				margin-left: -100px;
+				cursor: pointer;
+				font-size: 1.5em;
+				z-index: 3;
+			}
+
+			&__clear {
+				color: white;
+				margin-left: -55px;
+				cursor: pointer;
+				font-size: 1.5em;
+				z-index: 3;
+			}
+		}
+
+		&__label {
+			color: $white;
+			font-size: 1.3em;
+			margin-bottom: 10px;
+
+			a {
+				color: $white;
+			}
+
+			.fa-question-circle {
+				margin-left: 3px;
+				opacity: 0.8;
+				transition: ease 0.4s;
+				font-size: 0.7em;
+				margin-bottom: 7px;
+				&:hover {
+					opacity: 1;
+					transform: translateY(-5px);
+				}
+			}
+		}
+	}
+
+	.form__advanced-options {
+		background: rgba(255, 255, 255, 0.1);
+		padding: 20px 30px;
+		border-radius: 5px;
+		margin-bottom: 50px;
+
+		&__title {
+			color: $white;
+			font-size: 1.5em;
+			margin-bottom: 20px;
+			font-weight: 700;
+			text-transform: uppercase;
+			text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+			font-family: $font-accent;
+		}
+
+		.input__label {
+			font-size: 1.1em;
+		}
+	}
+}
+
+.syntax {
+	p,
+	li {
+		color: $white;
+		line-height: 2em;
+		font-size: 1.2em;
+	}
+
+	h2,
+	h3,
+	h4,
+	strong {
+		color: $white;
+		line-height: 3em;
+	}
+
+	h2 {
+		font-size: 2em;
+		font-weight: 700;
+		text-transform: uppercase;
+		text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+		font-family: $font-accent;
+		text-align: center;
+	}
+
+	h3 {
+		@extend h2;
+		font-size: 1.5em;
+		font-style: italic;
+		margin-top: 50px;
+	}
+
+	h4 {
+		line-height: 0.5em;
+		color: $white--faded;
+		font-size: 2em;
+		margin-top: 70px;
+		font-family: $font-accent;
+	}
+
+	&__intro {
+		p:first-child::first-letter {
+			font-size: 5em;
+			font-weight: 600;
+			font-family: $font-accent;
+		}
+	}
+
+	.fa-li {
+		margin-top: 5px;
+	}
+
+	li {
+		margin-bottom: 1em;
+		line-height: 1.5em;
+	}
+
+	.code-block {
+		background: rgba(255, 255, 255, 0.2);
+		padding: 0 5px;
+		font-family: monospace;
+	}
+}
+
+.built-by {
+	&__background {
+		background-image: url(../images/heart.png);
+		background-size: contain;
+		background-position: center center;
+		background-repeat: no-repeat;
+		position: absolute;
+		bottom: 20px;
+		left: 20px;
+		height: 150px;
+		width: 150px;
+		padding: 50px 0;
+		transform: rotate(-10deg);
+		transition: cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.3s;
+
+		&:hover {
+			transform: rotate(10deg);
+		}
+
+		@media (max-width: 1200px) {
+			position: relative;
+		}
+	}
+
+	&__text {
+		text-align: center;
+		color: $white;
+		font-size: $font-size !important;
+		line-height: 1.5em !important;
+	}
+}
+
+.footer {
+	p {
+		color: $white--faded;
+		text-align: center;
+	}
+}

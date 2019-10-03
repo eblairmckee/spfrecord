@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>SPF Record Syntax | SPF Record Generator</title>
+		<meta
+			name="description"
+			content="What are SPF records and how do you properly format them? Learn the correct syntax and helpful tips for configuring SPF records. "
+		/>
+		<link rel="icon" href="https://constellix.com/favicon.ico" />
+		<link rel="canonical" href="https://spfrecord.io/syntax/" />
+
+		<!-- Styles -->
+		<link rel="stylesheet" href="<%=htmlWebpackPlugin.files.chunks.main.css %>" />
+
+		<!-- Google Tag Manager -->
+		<script>
+			(function(w, d, s, l, i) {
+				w[l] = w[l] || [];
+				w[l].push({
+					'gtm.start': new Date().getTime(),
+					event: 'gtm.js'
+				});
+				var f = d.getElementsByTagName(s)[0],
+					j = d.createElement(s),
+					dl = l != 'dataLayer' ? '&l=' + l : '';
+				j.async = true;
+				j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+				f.parentNode.insertBefore(j, f);
+			})(window, document, 'script', 'dataLayer', 'GTM-MW2PX97');
+		</script>
+		<!-- End Google Tag Manager -->
+	</head>
+
+	<body>
+		<!-- Google Tag Manager (noscript) -->
+		<noscript>
+			<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MW2PX97" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+		</noscript>
+		<!-- End Google Tag Manager (noscript) -->
+
+		<div class="section__spf-wizard syntax">
+			<div class="container-fluid overlay">
+				<div class="container">
+					<div class="button--home">
+						<a href="../">
+							<span class="hl">
+								<i class="fas fa-arrow-left"></i>
+								Create an SPF Record
+							</span>
+						</a>
+					</div>
+					<div class="row title__wrapper">
+						<div class="col-12">
+							<h1>What are SPF Records?</h1>
+							<div class="text--center">
+								<a href="#how-to"><span class="hl">How to Create Them</span></a>
+								,
+								<a href="#syntax"><span class="hl">Syntax</span></a>
+								&
+								<a href="#hints"><span class="hl">Helpful Hints</span></a>
+							</div>
+						</div>
+					</div>
+					<div class="row syntax__intro margin-top-50" id="how-to">
+						<div class="col-md-8 ml-auto mr-auto">
+							<p>
+								SPF records are used by mail exchanges to verify which hosts are allowed to send mail for that domain. It is used to validate a
+								sender’s identity and can help mitigate spam.
+							</p>
+							<p>
+								SPF records are configured using a
+								<a href="http://help.constellix.com/txt-records/"><span class="hl">TXT record</span></a>
+								. There are some providers that allow you to configure it through an SPF record, but it has since been deprecated.
+							</p>
+							<p>
+								We recommend that you always store your SPF record information in a TXT record. If you insist on using an SPF record, make sure
+								you also have an identical TXT record.
+							</p>
+						</div>
+					</div>
+					<div class="row margin-top-50" id="hints">
+						<div class="col-md-8 ml-auto mr-auto intro__text">
+							<h2>Helpful Hints</h2>
+							<ul class="fa-ul">
+								<li>
+									<i class="fas fa-li fa-heart"></i>
+									Check with your DNS provider if they require you to enclose the SPF record data in quotations.
+								</li>
+								<li>
+									<i class="fas fa-li fa-heart"></i>
+									If your record data exceeds 255 characters, you will need to
+									<a href="https://kb.isc.org/docs/aa-00356" target="_blank">split it</a>
+									into multiple records.
+								</li>
+								<li>
+									<i class="fas fa-li fa-heart"></i>
+									You can only have one SPF record per domain.
+								</li>
+								<li>
+									<i class="fas fa-li fa-heart"></i>
+									SPF records are almost always created at the root of your domain. However, sometimes you may want to send email from a
+									subdomain like:
+									<span class="code-block">something.example.com</span>
+									. In that case, you would name the record
+									<span class="code-block">something</span>
+									.
+								</li>
+								<li>
+									<i class="far fa-li fa-heart"></i>
+									After you create your record you can test it using these
+									<a href="https://www.kitterman.com/spf/validate.html" target="_blank"><span class="hl">free tools</span></a>
+									.
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="row margin-top-50" id="syntax">
+						<div class="col-md-8 ml-auto mr-auto">
+							<h2>Syntax &amp; Record Format</h2>
+							<p>
+								All SPF records begin with a
+								<span class="code-block">v=</span>
+								string. This tells us which SPF version is being used.
+							</p>
+							<h3>Mechanisms</h3>
+							<p>
+								The initial
+								<span class="code-block">v=</span>
+								string is followed by a series of mechanisms that will indicate different user-defined rules. The following rules indicate who
+								can send mail for the domain:
+							</p>
+							<h4>A</h4>
+							<p>The sender’s domain must have an A or AAAA record that can be resolved to the sender's address.</p>
+							<strong>Syntax:</strong>
+							<p><span class="code-block">a:hostname, a:anotherhostname</span></p>
+							<h4>MX</h4>
+							<p>The domain must have an MX (Mail Exchange) record that resolves to the sender's address.</p>
+							<p>AKA: the mail must come from one of the domain’s incoming mail servers.</p>
+							<h4>IP4 or IP6</h4>
+							<p>The sender’s IP address must match (one of) the IP address listed in the SPF record.</p>
+							<strong>Syntax:</strong>
+							<p><span class="code-block">ip4:192.0.4.0, ip4:192.9.33.4/24</span></p>
+							<h4>EXISTS</h4>
+							<p>The domain must resolve to an address. Rarely used.</p>
+							<h4>PTR</h4>
+							<p>
+								This will authorize ALL subdomains and hostnames of your domain to be able to send mail. This mechanism has been deprecated and
+								should not be used.
+							</p>
+							<h3>Qualifiers</h3>
+							<p>
+								All mechanisms, or each one individually, can be combined with a qualifier. Qualifiers dictate how mail exchanges should handle
+								matching.
+							</p>
+							<h4>+</h4>
+							<p>for a PASS result</p>
+							<h4>?</h4>
+							<p>for a NEUTRAL result interpreted like NONE (no policy).</p>
+							<h4>~</h4>
+							<p>for SOFTFAIL, a debugging aid between NEUTRAL and FAIL. Typically, messages that return a SOFTFAIL are accepted but tagged.</p>
+							<h4>-</h4>
+							<p>for FAIL, the mail should be rejected</p>
+						</div>
+					</div>
+					<div class="built-by">
+						<div class="built-by__background">
+							<p class="built-by__text">
+								Built with
+								<i class="fas fa-heart"></i>
+								&amp;
+								<i class="fab fa-js-square"></i>
+								<br />
+								by
+								<a href="https://constellix.com"><span class="hl">Constellix</span></a>
+								<br />
+							</p>
+						</div>
+					</div>
+					<div class="row padding-top-100">
+						<div class="col footer">
+							<p>
+								Icons by
+								<a href="https://www.flaticon.com/" target="_blank"><span class="hl">Flaticon</span></a>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Scripts -->
+		<script src="<%= htmlWebpackPlugin.files.chunks.main.entry %>"></script>
+
+		<script>
+			$(function() {
+				$('[data-toggle="popover"]').popover();
+				$('.popover-dismiss').popover({
+					trigger: 'focus'
+				});
+			});
+		</script>
+	</body>
+</html>

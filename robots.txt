@@ -1,0 +1,3 @@
+User-agent: *
+Sitemap: https://spfrecord.io/sitemap.xml
+Disallow: 

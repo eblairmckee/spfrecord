@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SPF Record Generator | Built by Constellix</title>
+    <meta name="description" content="Free SPF generator tool. Create your own custom SPF records by answering a few questions, then copy and paste into a TXT record through your DNS provider. " />
+    <link rel="icon" href="https://constellix.com/favicon.ico" />
+    <link rel="canonical" href="https://spfrecord.io/" />
+
+    <link rel="stylesheet" href="<%=htmlWebpackPlugin.files.chunks.main.css %>">
+
+    <!-- Google Tag Manager -->
+    <script>
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-MW2PX97');
+    </script>
+    <!-- End Google Tag Manager -->
+
+</head>
+
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MW2PX97" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <div class="section__spf-wizard">
+        <div class="button--syntax">
+            <a href="syntax/">
+                <span class="hl">Need Help? <i class="fas fa-arrow-right"></i></span>
+            </a>
+        </div>
+        <div class="container-fluid overlay">
+            <div class="container">
+                <div class="row title__wrapper">
+                    <div class="col-12">
+                        <h1>SPF Record Generator</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 ml-auto mr-auto text--center intro__text">
+                        <p>This wizard will guide you through the process of generating your own <a href="syntax/"><span
+                                    class="hl">SPF
+                                    record</span></a>.
+                        </p>
+                        <p>Copy and paste the result into a <a href="http://help.constellix.com/txt-records/"><span
+                                    class="hl">TXT
+                                    record</span></a> (through your DNS provider). </p>
+                        <p>You can learn more about how to configure SPF records, proper format and syntax, as well as
+                            helpful hints <a href="syntax/"><span class="hl">here</span></a>.</p>
+                    </div>
+                </div>
+                <div class="row margin-top-50">
+                    <div class="col-md-9 ml-auto mr-auto">
+                        <form class="form__spf-wizard">
+
+                            <div class="input--sticky">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="input__answer__wrapper">
+                                                <div class="input__label no-margin">Copy this:</div>
+                                                <input type="text" id="answer" class="input__answer" value="" readonly="readonly">
+                                                <i class="far fa-copy input__answer__copy"></i><i class="input__answer__clear far fa-trash-alt"></i>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-1">
+                                    <h3>#1</h3>
+                                </div>
+                                <div class="col-sm-11">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="domain" placeholder="Your domain"
+                                                value="" autofocus />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-sm-1">
+                                        <h3 class="even">#2</h3>
+                                    </div>
+                                    <div class="col-sm-11">
+                                        <div class="input__label">
+                                            Should any servers listed as incoming MX servers for <u class="domainName"></u>
+                                            be able to send email for this domain? <a href="#" data-toggle="popover"
+                                                tabindex="0" data-trigger="focus" data-placement="top" data-content="You can specify MX servers by creating MX records."><i
+                                                    class="fas fa-question-circle"></i></a>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="MXServers" id="allowMXServers"
+                                                value="mx" />
+                                            <label class="form-check-label" for="allowMXServers">Yes <span>(recommended)</span></label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="MXServers" id="disallowMXServers"
+                                                value="" />
+                                            <label class="form-check-label" for="disallowMXServers">No</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-sm-1">
+                                        <h3>#3</h3>
+                                    </div>
+                                    <div class="col-sm-11">
+                                        <div class="input__label">Should the current IP address of the host, <u class="domainName"></u> <a
+                                                href="#" data-toggle="popover" tabindex="0" data-trigger="focus"
+                                                data-placement="top" data-content="This is the IP address specified in the A record for the domain."><i
+                                                    class="fas fa-question-circle"></i></a>,
+                                            be allowed to send email for this domain?</div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="IPAddress" id="allowIPAddress"
+                                                value=" a" />
+                                            <label class="form-check-label" for="allowIPAddress">Yes <span>(recommended)</span></label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="IPAddress" id="disallowIPAddress"
+                                                value="" />
+                                            <label class="form-check-label" for="disallowIPAddress">No</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- <div class="form-group">
+                                <div class="input__label">Should any hostnames<a href="#" data-toggle="popover"
+                                        tabindex="0" data-trigger="focus" data-placement="top" data-content="If you only want to specify one or more hostnames, use the Advanced Settings below. "><i
+                                            class="fas fa-question-circle"></i></a> ending in <u class="domainName"></u>
+                                    be able to send email for this domain? </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="hostnames" id="disallowHostnames"
+                                        value="" />
+                                    <label class="form-check-label" for="disallowHostnames">No <span>(recommended)</span></label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="hostnames" id="allowHostnames"
+                                        value=" ptr" />
+                                    <label class="form-check-label" for="allowHostnames">Yes</label>
+                                </div>
+                            </div> -->
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-sm-1">
+                                        <h3 class="even">#4</h3>
+                                    </div>
+                                    <div class="col-sm-11">
+                                        <div class="input__label">How strict should the servers be that handle the
+                                            emails?
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="strict" id="strictFail"
+                                                value=" -all" />
+                                            <label class="form-check-label" for="strictFail">Fail <span>(Reject
+                                                    non-compliant
+                                                    requests)</span></label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="strict" id="strictSoftFail"
+                                                value=" ~all" />
+                                            <label class="form-check-label" for="strictSoftFail">Soft Fail <span>(Accept,
+                                                    but
+                                                    not
+                                                    mark non-compliant requests)</span></label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="strict" id="strictNeutral"
+                                                value=" ?all" />
+                                            <label class="form-check-label" for="strictNeutral">Neutral <span>(Mail
+                                                    will
+                                                    probably
+                                                    accepted)</span></label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form__advanced-options__title">Advanced Options:</div>
+                            <div class="form__advanced-options">
+                                <div class="form-group">
+                                    <label class="input__label" for="relayIPAddress">List any IP address(es)<a href="#"
+                                            data-toggle="popover" tabindex="0" data-trigger="focus" data-placement="top"
+                                            data-content="If you require more than one IP address, separate with a space. Make sure you include the subnet mask, ie: 127.0.0.1/32. "><i
+                                                class="fas fa-question-circle"></i></a> or subnet(s) authorized to
+                                        deliver or relay
+                                        mail
+                                        for <u class="domainName"></u>: </label>
+                                    <input type="text" class="form-control" id="relayIPAddress" placeholder="IP address(es) in CIDR format. Separated by a space."
+                                        value="" />
+                                </div>
+                                <div class="form-group">
+                                    <label class="input__label" for="relayHostnames">List any hostname(s) or server(s)<a
+                                            href="#" data-toggle="popover" tabindex="0" data-trigger="focus"
+                                            data-placement="top" data-content="These are subdomains or A records you've created for your domain. If you require more than one hostname, separate with a space. "><i
+                                                class="fas fa-question-circle"></i></a>
+                                        authorized to
+                                        deliver or relay mail for
+                                        <u class="domainName"></u>: </label>
+                                    <input type="text" class="form-control" id="relayHostnames" placeholder="Hostname(s) separated by a space."
+                                        value="" />
+                                </div>
+                                <div class="form-group">
+                                    <label class="input__label" for="relayDomains">List any domain(s) or service(s)<a
+                                            href="#" data-toggle="popover" tabindex="0" data-trigger="focus"
+                                            data-placement="top" data-content="Your mail service will generally provide this for you. If you require more than one domain, separate with a space. "><i
+                                                class="fas fa-question-circle"></i></a>
+                                        authorized to
+                                        deliver or relay mail for
+                                        <u class="domainName"></u>: </label>
+                                    <input type="text" class="form-control" id="relayDomains" placeholder="Domain(s) separated by a space."
+                                        value="" />
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="built-by">
+                <div class="built-by__background">
+                    <p class="built-by__text">Built with <i class="fas fa-heart"></i> &amp; <i class="fab fa-js-square"></i>
+                        <br>
+                        by <a href="https://constellix.com"><span class="hl">Constellix</span></a><br>
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col footer">
+                    <p>Icons by <a href="https://www.flaticon.com/" target="_blank"><span class="hl">Flaticon</span></a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="<%= htmlWebpackPlugin.files.chunks.main.entry %>"></script>
+
+    <script>
+        $(function () {
+            $('[data-toggle="popover"]').popover();
+            $('.popover-dismiss').popover({
+                trigger: 'focus'
+            })
+        })
+    </script>
+
+</body>
+
+</html>
